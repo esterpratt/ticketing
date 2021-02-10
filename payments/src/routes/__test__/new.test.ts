@@ -60,14 +60,11 @@ it('returns a 204 with valid inputs', async () => {
   });
   await order.save();
 
-  const response = await request(app)
+  await request(app)
     .post('/api/payments')
     .set('Cookie', global.signin(userId))
-    .send({ token: 'tok_visa', orderId: order.id });
-
-  console.log('res:', response);
-
-  expect(response.status).toEqual(201);
+    .send({ token: 'tok_visa', orderId: order.id })
+    .expect(201);
 
   const stripeCharges = await stripe.charges.list({ limit: 50 });
   const stripeCharge = stripeCharges.data.find((charge) => {
