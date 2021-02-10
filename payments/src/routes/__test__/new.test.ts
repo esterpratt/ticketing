@@ -65,7 +65,7 @@ it('returns a 204 with valid inputs', async () => {
     .set('Cookie', global.signin(userId))
     .send({ token: 'tok_visa', orderId: order.id });
 
-  console.log(response);
+  console.log('res:', response);
 
   expect(response.status).toEqual(201);
 
