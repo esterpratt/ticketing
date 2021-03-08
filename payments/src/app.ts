@@ -15,7 +15,7 @@ app.use(
   cookieSession({
     signed: false,
     // when in test, we want to return the cookie even if the http request is not secured
-    secure: process.env.NODE_ENV !== 'test',
+    secure: false,
   })
 );
 app.use(currentUser);
